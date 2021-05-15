@@ -5,18 +5,15 @@ import streamlit as st
 import pandas as pd
 import codecs
 import plotly.express as px
-import plotly.graph_objects as go
-from pandas_profiling import ProfileReport
 import altair as alt
 from PIL import Image
-from vega_datasets import data
 import numpy as np
 # Components Pkgs
 import streamlit.components.v1 as components
-from streamlit_pandas_profiling import st_profile_report
 
 # Custome Component Fxn
 import sweetviz as sv
+
 
 st.set_page_config (
     page_title="DASHBOARD PLEX" ,
