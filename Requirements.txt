@@ -1,0 +1,9 @@
+streamlit==0.81.1
+pandas==1.2.4
+plotly==4.14.3
+matplotlib==3.4.1
+numpy==1.20.2
+altair==4.1.0
+pillow==8.2.0
+sweetviz==2.1.0
+htmlmin==0.1.12
