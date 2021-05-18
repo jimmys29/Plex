@@ -1,85 +1,82 @@
 # Core Pkgs
 import streamlit as st
-
 # EDA Pkgs
 import pandas as pd
 import codecs
-import plotly.express as px
+import plotly_express as px
 import altair as alt
 from PIL import Image
-import numpy as np
 # Components Pkgs
 import streamlit.components.v1 as components
-
 # Custome Component Fxn
 import sweetviz as sv
 
+st.set_page_config(
+    page_title="DASHBOARD PLEX",
+    page_icon="https://www.telefonica.com/documents/20195/146013668/telefonica-logo-azul.png/03c9a0c0-57eb-eb53-5649-79e382fd4965?t=1618483185177",
+    layout="wide",
+    initial_sidebar_state="expanded")
 
-st.set_page_config (
-    page_title="DASHBOARD PLEX" ,
-    page_icon="https://www.telefonica.com/documents/20195/146013668/telefonica-logo-azul.png/03c9a0c0-57eb-eb53-5649-79e382fd4965?t=1618483185177" ,
-    layout="wide" ,
-    initial_sidebar_state="expanded" ,
-)
-image = Image.open ( 'TelefonicaL.jpg' )
+image = Image.open('TelefonicaL.jpg')
 # rutimage = ""<img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%">""
 # image= st.image("<img src=rutimage; style="width:100%">")
-img = st.sidebar.image ( image )
+img = st.sidebar.image(image)
 
 
-def st_display_sweetviz(report_html , width=1000 , height=500):
-    report_file = codecs.open ( report_html , 'r' )
-    page = report_file.read ()
-    components.html ( page , width=width , height=height , scrolling=True )
+def st_display_sweetviz(report_html, width=1000, height=500):
+    report_file = codecs.open(report_html, 'r')
+    page = report_file.read()
+    components.html(page, width=width, height=height, scrolling=True)
 
 
 footer_temp = """
 
-	<!-- CSS -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" rel= 
+                 "stylesheet"media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity=
+                "sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 
-	<footer class="page-footer grey darken-4">
-	<div class="container" id="aboutapp">
-	<div class="row">
-	<div class="col l6 s12">
-	<h5 class="white-text">About Causacion Telefonica PlEx App</h5>
-	<p class="grey-text text-lighten-4">Using Streamlit.</p>
+    <footer class="page-footer grey darken-4">
+    <div class="container" id="aboutapp">
+    <div class="row">
+    <div class="col l6 s12">
+    <h5 class="white-text">About Causacion Telefonica PlEx App</h5>
+    <p class="grey-text text-lighten-4">Using Streamlit.</p>
 
 
-	</div>
+    </div>
 
-	<div class="col l3 s12">
-	<h5 class="white-text">Connect With Me</h5>
-	<ul>
-	<a href=""https://www.telefonica.com/documents/20195/146016182/facebook-icon.png/752bd9ce-a2cf-8ccf-c906-ae9172935ea4?t=1619084036934"">
-	<i class="fab fa-facebook fa-4x"></i>
-	</a>
-	<a href="https://www.linkedin.com/in/jaime-espindola-a5833447/" target="_blank" class="white-text">
-	<i class="fab fa-linkedin fa-4x"></i>
-	</a>
-	<a href="https://www.telefonica.com/documents/20195/146016182/youtube-icon.png/8dd29ebe-b03d-dd41-7ccc-a30b51f95b76?t=1619084037794" target="_blank" class="white-text">
-	<i class="fab fa-youtube-square fa-4x"></i>
-	</a>
-	<a href="https://www.telefonica.com/documents/20195/146016182/instagram-icon.png/51b9aca8-3e54-fe2e-4946-bed8501584b9?t=1619084037303" target="_blank" class="white-text">
-	<i class="fab fa-github-square fa-4x"></i>
-	</a>
-	</ul>
-	</div>
-	</div>
-	</div>
-	<div class="footer-copyright">
-	<div class="container">
-	Made by, <a class="white-text text-lighten-3" href="https://www.telefonica.com/es/home"> Jaime Espindola</a><br/>
-	<a class="white-text text-lighten-3" href="https://www.telefonica.com/es/home">@Jaime Espindola</a>
-	</div>
-	</div>
-	</footer>
-
-	"""
+    <div class="col l3 s12">
+    <h5 class="white-text">Connect With Me</h5>
+    <ul>
+    <a href=""https://www.telefonica.com/documents/20195/146016182/facebook-icon.png/752bd9ce-a2cf-8ccf-c906-ae9172935ea4?t=1619084036934"">
+    <i class="fab fa-facebook fa-4x"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/jaime-espindola-a5833447/" target="_blank" class="white-text">
+    <i class="fab fa-linkedin fa-4x"></i>
+    </a>
+    <a href="https://www.telefonica.com/documents/20195/146016182/youtube-icon.png/8dd29ebe-b03d-dd41-7ccc-a30b51f95b76?t=1619084037794" target="_blank" class="white-text">
+    <i class="fab fa-youtube-square fa-4x"></i>
+    </a>
+    <a href="https://www.telefonica.com/documents/20195/146016182/instagram-icon.png/51b9aca8-3e54-fe2e-4946-bed8501584b9?t=1619084037303" target="_blank" class="white-text">
+    <i class="fab fa-github-square fa-4x"></i>
+    </a>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+    <div class="container">
+    Made by, <a class="white-text text-lighten-3" href="https://www.telefonica.com/es/home"> Jaime Espindola</a><br/>
+    <a class="white-text text-lighten-3" href="https://www.telefonica.com/es/home">@Jaime Espindola</a>
+    </div>
+    </div>
+    </footer>
+            """
 
 html_temp = """
     <div style="background-color:royalblue;padding:1px;border-radius:1px">
@@ -87,104 +84,109 @@ html_temp = """
     </div>
     """
 
+
 # T1 = st.title("<h1 style='text-align: center;background:royalblue; color: white;'>Dash Board Causacion PlEx</h1>", "Dash")
 def archivo():
-    st.sidebar.title ( "Seleccione Archivo DashBoard" )
-    data_file = st.sidebar.file_uploader ( "" , type=[ 'xlsx' ] )
+    st.sidebar.title("Seleccione Archivo DashBoard")
+    data_file = st.sidebar.file_uploader(" ", type=['xlsx'])
     return data_file
 
 
 def main():
     """DASH BOARD TELEFONICA PLEX"""
-    st.sidebar.title ( "<h4 style='text-align: right ;font-size=50; color: red;'>Seleccione archivo Origen</h4>" , "File" )
-    data_file = st.sidebar.file_uploader ( "" , type=[ 'xlsx' ])
+    st.sidebar.title("<h4 style='text-align: right ;font-size=50; color: red;'>Seleccione archivo Origen</h4>", "File")
+    data_file = st.sidebar.file_uploader(" ", type=['xlsx'])
 
-    menu = [ "Home" , "Jefatura" , "Anillo Antioquia" , "Ftth" , "Transformacion IP" , "Banagrario", "About" ]
-    choice = st.sidebar.selectbox ( "Menu Proyectos" , menu )
+    menu = ["Home", "Jefatura", "Anillo Antioquia", "Ftth", "Transformacion IP", "Banagrario", "About"]
+    choice = st.sidebar.selectbox("Menu Proyectos", menu)
 
-    st.title ( "<h4 style='text-align: right ;font-size=50; color: darkblue;'>Choise Proyect of Menu</h4>" , "File" )
+    st.title("<h4 style='text-align: right ;font-size=50; color: darkblue;'>Choise Proyect of Menu</h4>", "File")
 
     # OPCIONES A GRAFICAR
-    tile_x = st.sidebar.selectbox ( label="Seleccione Opcion  Eje_X" ,options=[ "PROYECTO", "SITIO" , "GESTOR", "REGIONAL", "ID_PTO", "MES" ], index=0)
-    opcion = st.sidebar.radio ( "Seleccione Opcion  Eje_Y" , [ "COSTO" , "CANTIDAD" ] )
+    tile_x = st.sidebar.selectbox(label="Seleccione Opcion  Eje_X",
+                                    options=["PROYECTO", "SITIO", "GESTOR", "REGIONAL", "ID_PTO", "MES"],
+                                    index=0)
+    opcion = st.sidebar.radio("Seleccione Opcion  Eje_Y", ["COSTO", "CANTIDAD"])
     if not opcion:
-        st.error ( "Por favor seleccione Una Opcion" )
+        st.error("Por favor seleccione Una Opcion")
 
-    def op():
+    def op( ):
         if opcion == "COSTO":
-            opc = 'TOTAL'
+            opt = 'TOTAL'
         elif opcion == "CANTIDAD":
-            opc = 'CANTIDAD'
-        return opc
-    tile_y = op ()
-    tile_col = st.sidebar.radio ( "Seleccione Opcion  Color" , [ "GRUPO", "CONTRATO" , "EQUIPO", "PROYECTO"  ] )
+            opt = 'CANTIDAD'
+            return opt
+
+    tile_y = op()
+    tile_col = st.sidebar.radio("Seleccione Opcion  Color", ["GRUPO", "CONTRATO", "EQUIPO", "PROYECTO"])
     if data_file is not None:
-        dfup = pd.read_excel ( data_file )
+        dfup = pd.read_excel(data_file)
         # dfup = dfap[dfap['GRUPO'].dropna()]
         if choice == "Jefatura":
-            st.subheader ( "Jefatura" )
+            st.subheader("Jefatura")
             # Selection para interaccion
-            selector = alt.selection ( type="single" , empty='none' )
-            Tot = dfup['TOTAL'].apply(np.sum)
+            selector = alt.selection(type="single", empty='none')
+
             # Grafico General
-            if st.checkbox ( 'Ver Grafica Consolidado' , menu ):
-                #st.line_chart(dfup)  # mostrar barra lateral
-                Graf_Jef = alt.Chart ( dfup ).mark_boxplot ( size=50,extent=3.0) \
-                    .encode ( x=alt.X ( tile_x, title=tile_x ) ,
-                              y=alt.Y ( tile_y , title=tile_y ) , color= tile_col, size='TIPO',
-                              tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] ).add_selection (selector).interactive ().properties(width=500,height=300)
-                fig = px.histogram ( dfup , x=tile_x , y=tile_y , color=tile_col,
-                                     hover_data=[ 'TIPO' , 'ID_PTO' , 'GESTOR' ] , labels={'TOTAL': 'TOTAL CAUSADO'} )
-                st.plotly_chart ( fig )
-                Graf_Jef
-                text = Graf_Jef.mark_text ( align='left' , baseline='middle' , dx=3 , font="Courier" ,
-                                             fontSize=1 ).encode ( text='TOTAL' , size=alt.value ( 7 ) )
+            if st.checkbox('Ver Grafica Consolidado', menu):
+                # st.line_chart(dfup)  # mostrar barra lateral
+                Graf_Jef = alt.Chart(dfup).mark_boxplot(size=50, extent=3.0) \
+                    .encode(x=alt.X(tile_x, title=tile_x),
+                              y=alt.Y(tile_y, title=tile_y), color=tile_col, size='TIPO',
+                              tooltip=['TIPO', 'TIPO', 'TOTAL', tile_y]).add_selection(
+                    selector).interactive().properties(width=500, height=300)
+                fig = px.histogram(dfup, x=tile_x, y=tile_y, color=tile_col,
+                                     hover_data=['TIPO', 'ID_PTO', 'GESTOR'], labels={'TOTAL': 'TOTAL CAUSADO'})
+                st.plotly_chart(fig)
+                # Graf_Jef
+                text = Graf_Jef.mark_text(align='left', baseline='middle', dx=3, font="Courier",
+                                            fontSize=1).encode(text='TOTAL', size=alt.value(7))
 
-                #fig = fig.add_trace(go.Funnel( dfup , x=tile_x , y=tile_y , color=tile_col ,
-                                     # labels={'TOTAL': 'TOTAL CAUSADO'} )
+                # fig = fig.add_trace(go.Funnel( dfup , x=tile_x , y=tile_y , color=tile_col ,
+                # labels={'TOTAL': 'TOTAL CAUSADO'} )
 
-                #st.plotly_chart ( fig )
+                # st.plotly_chart ( fig )
 
-            if st.checkbox ( 'Mostrar Tabla de Datos' ):
-                st.write ( dfup )
-            if st.button ( "Generate Report" ):
+            if st.checkbox('Mostrar Tabla de Datos'):
+                st.write(dfup)
+            if st.button("Generate Report"):
                 # Normal Workflow
-                report = sv.analyze ( dfup )
-                report.show_html ()
-                st_display_sweetviz ( "SWEETVIZ_REPORT.html" )
+                report = sv.analyze(dfup)
+                report.show_html()
+                st_display_sweetviz("SWEETVIZ_REPORT.html")
 
         if choice == "Anillo Antioquia":
-            st.subheader ( "Anillo Antioquia" )
-            dfpr = dfup [ (dfup [ 'PROYECTO' ] == 'ANILLO ANTIOQUIA') ]
-            tot = dfup.groupby ( [ 'PROYECTO' ] ) [ 'PROYECTO','TOTAL' ].sum ()
-            Tot = dfup [ 'TOTAL' ].apply ( np.sum )
+            st.subheader("Anillo Antioquia")
+            dfpr = dfup[(dfup['PROYECTO'] == 'ANILLO ANTIOQUIA')]
+            tot = dfup.groupby(['PROYECTO'])['PROYECTO', 'TOTAL'].sum()
+            # Tot = dfup [ 'TOTAL' ].apply ( np.sum )
             # Selection para interaccion
-            selector = alt.selection ( type="single" , empty='none' )
+            selector = alt.selection(type="single", empty='none')
             multi = alt.selection_multi()
             # Grafico General
-            if st.checkbox ( 'Ver Grafica Proyecto Anillo Antioquia' , menu ):
+            if st.checkbox('Ver Grafica Proyecto Anillo Antioquia', menu):
                 # st.line_chart(data())  # mostrar barra lateral
-                Graf_Proy = alt.Chart ( dfpr ).mark_bar( size=500, cornerRadiusTopLeft=20) \
-                    .encode ( x=alt.X (tile_x , title=tile_x ) ,
-                              y=alt.Y ( tile_y , title=tile_y ) , color=tile_col , size='TIPO' ,
-                              tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] )\
-                                .add_selection (selector ).interactive ()
+                Graf_Proy = alt.Chart(dfpr).mark_bar(size=500 , cornerRadiusTopLeft=20) \
+                    .encode ( x=alt.X(tile_x, title=tile_x),
+                              y=alt.Y(tile_y, title=tile_y), color=tile_col, size='TIPO',
+                              tooltip=['TIPO', 'TIPO', 'TOTAL', tile_y]) \
+                    .add_selection(selector).interactive()
 
-                #Graf_otr = alt.Chart ( dfpr ).transform_joinaggregate (TotalTOTAL='sum(TOTAL)' ,).transform_calculate(PercentOfTotal="datum.TOTAL / datum.TotalTOTAL").mark_bar().encode(alt.X('PercentOfTotal:Q', axis=alt.Axis(format='.0%')),y='GRUPO:N', color=tile_col)
-                fig = px.histogram ( dfpr , x=tile_x , y=tile_y , color=tile_col ,
-                                     hover_data=[ 'TIPO' , 'ID_PTO' , 'GESTOR' ] , labels={'TOTAL': 'TOTAL CAUSADO'} )
-                st.plotly_chart ( fig )
-                text = Graf_Proy.mark_text(align='left',baseline='middle',dy=.1,font="Courier", fontSize=1, angle=270).encode(text='TOTAL',size=alt.value(7))
-                Graf_Proy
-                text
+                # Graf_otr = alt.Chart ( dfpr ).transform_joinaggregate (TotalTOTAL='sum(TOTAL)' ,).transform_calculate(PercentOfTotal="datum.TOTAL / datum.TotalTOTAL").mark_bar().encode(alt.X('PercentOfTotal:Q', axis=alt.Axis(format='.0%')),y='GRUPO:N', color=tile_col)
+                fig = px.histogram(dfpr, x=tile_x, y=tile_y, color=tile_col,
+                                     hover_data=['TIPO', 'ID_PTO', 'GESTOR'], labels={'TOTAL': 'TOTAL CAUSADO'})
+                st.plotly_chart(fig)
+                text = Graf_Proy.mark_text(align='left', baseline='middle', dy=.1, font="Courier", fontSize=1,
+                                             angle=270).encode(text='TOTAL', size=alt.value(7))
+                # Graf_Proy
 
-            if st.checkbox ('Mostrar Tabla de Datos'):
-                st.write ( dfpr )
-            if st.button ( "Generate Report" ):
+            if st.checkbox('Mostrar Tabla de Datos'):
+                st.write(dfpr)
+            if st.button("Generate Report"):
                 # Normal Workflow
-                report = sv.analyze ( dfpr )
-                report.show_html ()
-                st_display_sweetviz ( "SWEETVIZ_REPORT.html" )
+                report = sv.analyze(dfpr)
+                report.show_html()
+                st_display_sweetviz("SWEETVIZ_REPORT.html")
 
         dfup = pd.read_excel ( data_file )
         if choice == "Transformacion IP":
@@ -196,15 +198,15 @@ def main():
             if st.checkbox ( 'Ver Grafica Proyecto' , menu ):
                 # st.line_chart(data())  # mostrar barra lateral
                 Graf_Proy = alt.Chart ( dfpr ).mark_bar ( size=50 ) \
-                    .encode ( x=alt.X (tile_x , title=tile_x ) ,
+                    .encode ( x=alt.X ( tile_x , title=tile_x ) ,
                               y=alt.Y ( tile_y , title=tile_y ) , color=tile_col , size='TIPO' ,
-                              tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] )\
-                                .add_selection (selector ).interactive ()
+                              tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] ) \
+                    .add_selection ( selector ).interactive ()
 
                 fig = px.histogram ( dfpr , x=tile_x , y=tile_y , color=tile_col , )
                 st.plotly_chart ( fig )
-                Graf_Proy
-            if st.checkbox ('Mostrar Tabla de Datos'):
+                st.write ( Graf_Proy )
+            if st.checkbox ( 'Mostrar Tabla de Datos' ):
                 st.write ( dfpr )
             if st.button ( "Generate Report" ):
                 # Normal Workflow
@@ -225,11 +227,12 @@ def main():
                     .encode ( x=alt.X ( tile_x , title=tile_x ) ,
                               y=alt.Y ( tile_y , title=tile_y ) , color=tile_col , size='TIPO' ,
                               tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] ) \
-                                .add_selection ( selector ).interactive ()
+                    .add_selection ( selector ).interactive ()
 
-            fig = px.histogram ( dfpr , x=tile_x , y=tile_y , color=tile_col, hover_data=['TIPO','ID_PTO','GESTOR'],labels={'TOTAL':'TOTAL CAUSADO'} )
+            fig = px.histogram ( dfpr , x=tile_x , y=tile_y , color=tile_col ,
+                                 hover_data=[ 'TIPO' , 'ID_PTO' , 'GESTOR' ] , labels={'TOTAL': 'TOTAL CAUSADO'} )
             st.plotly_chart ( fig )
-            Graf_Proy
+            # Graf_Proy
             if st.checkbox ( 'Mostrar Tabla de Datos' ):
                 st.write ( dfpr )
             if st.button ( "Generate Report" ):
@@ -250,11 +253,11 @@ def main():
                     .encode ( x=alt.X ( tile_x , title=tile_x ) ,
                               y=alt.Y ( tile_y , title=tile_y ) , color=tile_col , size='TIPO' ,
                               tooltip=[ 'TIPO' , 'TIPO' , 'TOTAL' , tile_y ] ) \
-                                .add_selection ( selector ).interactive ()
+                    .add_selection ( selector ).interactive ()
                 fig = px.histogram ( dfpr , x=tile_x , y=tile_y , color=tile_col ,
                                      hover_data=[ 'TIPO' , 'ID_PTO' , 'GESTOR' ] , labels={'TOTAL': 'TOTAL CAUSADO'} )
                 st.plotly_chart ( fig )
-                Graf_Proy
+                # Graf_Proy
             if st.checkbox ( 'Mostrar Tabla de Datos' ):
                 st.write ( dfpr )
             if st.button ( "Generate Report" ):
@@ -449,6 +452,8 @@ def main():
             }
             </script>
             """ )
+
+
 
 if __name__ == '__main__':
     main ()
