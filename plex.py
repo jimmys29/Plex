@@ -3,7 +3,6 @@ import streamlit as st
 # EDA Pkgs
 import pandas as pd
 import codecs
-import plotly
 import plotly_express as px
 import altair as alt
 from PIL import Image
